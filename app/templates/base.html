@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="../static/toruskit.bundle.css">
+<script src="../static/toruskit.js"></script>
+<script src="https://kit.fontawesome.com/3c3a2a590d.js" crossorigin="anonymous"></script>
+<title>Car Inventory +</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-gray">
+        <div class="container-fluid">
+            <a href="{{ url_for('site.home') }}" class="navbar-brand fst-italic">Car Inventory +</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <div data-tor="hover:push.up(xs) hover:bg(cyan)"><a class="nav-link active" aria-current="page" href="{{ url_for('site.home') }}">Home</a></div>
+                  </li>
+                  <li class="nav-item">
+                    <div data-tor="hover:push.up(xs) hover:bg(cyan)"> <a class="nav-link" href="{{ url_for('site.profile') }}">Profile</a></div>
+                  </li>
+                  {% if current_user.is_authenticated %}
+                  <li class="nav-item">
+                    <div data-tor="hover:push.up(xs) hover:bg(cyan)"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></div>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <div data-tor="hover:push.up(xs) hover:bg(cyan)"><a class="nav-link" href="{{ url_for('auth.signin') }}">Sign In</a></div>
+                  </li>
+                  <li class="nav-item">
+                    <div data-tor="hover:push.up(xs) hover:bg(cyan)"><a class="nav-link" href="{{ url_for('auth.signup') }}">Sign Up</a></div>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <!-- footer -->
+    <footer class="bg-gray text-center p-1">
+        <p class="lead text-center p-3">&copy; 2022 Mulder, Inc</p>
+    </footer>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
